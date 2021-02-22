@@ -48,15 +48,13 @@ public class ReproducerTest extends BottleRocketTest {
         this._createTestEntities();
 
         //find first MyEntity
-        List<MyEntity> foundEntities = datastore.find(MyEntity.class).iterator().toList();
+        MyEntity foundEntity = datastore.find(MyEntity.class).first();
 
-        foundEntities.forEach(foundEntity -> {
-            if(foundEntity != null) {
-                LOG.info("foundEntity id is " + foundEntity.id);
-            } else {
-                LOG.info("foundEntity is null");
-            }
-        });
+        if(foundEntity != null) {
+            LOG.info("foundEntity id is " + foundEntity.id);
+        } else {
+            LOG.info("foundEntity is null");
+        }
     }
 
     private void _createTestEntities() {
